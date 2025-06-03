@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Login"
+    tools:context=".Register"
     android:background="@color/main_bg"
     >
 
@@ -28,7 +28,7 @@
             android:layout_margin="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="REGISTER"
             android:gravity="center"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -37,13 +37,51 @@
             >
         </TextView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/input"
+                android:hint="Name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint"
+                android:padding="20dp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/txt_date"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="20dp"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:clickable="true"
+                android:background="@drawable/input"
+                android:hint="Date"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint"
+                android:padding="20dp" />
+        </LinearLayout>
+
         <EditText
-            android:id="@+id/txt_user"
-            android:layout_margin="20dp"
+            android:id="@+id/txt_email"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/input"
-            android:hint="Username"
+            android:hint="Email"
             android:textColor="@color/white"
             android:textColorHint="@color/hint"
             android:padding="20dp"
@@ -69,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="@color/marvel"
-            android:text="LOG IN"
+            android:text="REGISTER"
             android:textColor="@color/white"
             android:textSize="25sp"
             >
@@ -93,7 +131,7 @@
             android:layout_marginRight="50dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:textColor="@color/marvel"
+            android:textColor="@color/hint"
             android:text="LOGIN"
             android:backgroundTint="@color/bg_black"
             android:textSize="20sp"
@@ -106,7 +144,7 @@
             android:id="@+id/btn_viewregister"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:textColor="@color/hint"
+            android:textColor="@color/marvel"
             android:text="REGISTER"
             android:backgroundTint="@color/bg_black"
             android:textSize="20sp"
