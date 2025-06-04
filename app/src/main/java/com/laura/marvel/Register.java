@@ -56,7 +56,11 @@ public class Register extends AppCompatActivity {
                 } else if (txtPassStr.length() < 6) {
                     Toast.makeText(Register.this, "Password less than 8 characters", Toast.LENGTH_LONG).show();
                 } else {
+                    // Guardar todos los datos del usuario
                     editor.putString("mail", txtEmailStr);
+                    editor.putString("name", txtNameStr);
+                    editor.putString("birthdate", txtDateStr);
+                    editor.putString("password", txtPassStr);
 
                     editor.commit();
                     Intent i = new Intent(Register.this, MainActivity.class);

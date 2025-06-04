@@ -79,15 +79,28 @@
             app:layout_constraintStart_toStartOf="@+id/txt_name"
             app:layout_constraintTop_toBottomOf="@+id/power_bar_1" />
 
-        <!-- Primera fila de características -->
+        <!-- ID del personaje en cursiva -->
+        <TextView
+            android:id="@+id/txt_character_id_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="#123456"
+            android:textColor="@color/hint"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            
+        <!-- Primera fila de características
         <View
             android:id="@+id/attribute_1"
             android:layout_width="40dp"
             android:layout_height="4dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:background="@color/hint"
             app:layout_constraintStart_toStartOf="@+id/divider"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_character_id_display" />
 
         <View
             android:id="@+id/attribute_2"
@@ -98,8 +111,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/attribute_1"
             app:layout_constraintStart_toEndOf="@+id/attribute_1"
             app:layout_constraintTop_toTopOf="@+id/attribute_1" />
-
-        <!-- Segunda fila de características -->
+         -->
+        <!-- Segunda fila de características
         <View
             android:id="@+id/attribute_3"
             android:layout_width="50dp"
@@ -118,19 +131,20 @@
             app:layout_constraintBottom_toBottomOf="@+id/attribute_3"
             app:layout_constraintStart_toEndOf="@+id/attribute_3"
             app:layout_constraintTop_toTopOf="@+id/attribute_3" />
+          -->
 
-        <!-- Botón de favorito -->
+        <!-- Botón de saber más/detalles -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_favorite"
+            android:id="@+id/btn_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="1dp"
             app:fabSize="mini"
             app:tint="@color/white"
             app:backgroundTint="@color/marvel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/btn_star" />
+            app:srcCompat="@android:drawable/ic_menu_info_details" />
 
         <!-- Campos ocultos para mantener compatibilidad con el código existente -->
         <TextView

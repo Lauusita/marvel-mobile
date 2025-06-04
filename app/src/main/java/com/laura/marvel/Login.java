@@ -52,7 +52,12 @@ public class Login extends AppCompatActivity {
                 } else if (txtPass.length() < 6) {
                     Toast.makeText(Login.this, "Password less than 8 characters", Toast.LENGTH_LONG).show();
                 } else {
+                    // En un sistema real se verificaría con BD y se obtendrían los datos completos
+                    // Aquí simulamos que tenemos los datos
                     editor.putString("mail", txtUser);
+                    editor.putString("name", "Usuario Marvel"); // Valores por defecto para login demo
+                    editor.putString("birthdate", "01/01/2000");
+                    editor.putString("password", txtPass);
 
                     editor.commit();
                     Intent i = new Intent(Login.this, MainActivity.class);

@@ -1,5 +1,6 @@
 package com.laura.marvel.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,8 +49,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_name;
         ImageView img_details;
-        FloatingActionButton btn_favorite;
-        TextView txt_desc, txt_id, txt_comics, txt_series, txt_stories;
+        FloatingActionButton btn_details;
+        TextView txt_desc, txt_id, txt_comics, txt_series, txt_stories, txt_character_id_display;
         View itemContainer;
 
         public ViewHolder(@NonNull View itemView) {
@@ -61,7 +62,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             txt_series = itemView.findViewById(R.id.txt_series);
             txt_stories = itemView.findViewById(R.id.txt_stories);
             img_details = itemView.findViewById(R.id.img_pfp);
-            btn_favorite = itemView.findViewById(R.id.btn_favorite);
+            // btn_details = itemView.findViewById(R.id.btn_details);
+            txt_character_id_display = itemView.findViewById(R.id.txt_character_id_display);
             itemContainer = itemView;
         }
 
@@ -70,13 +72,19 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             txt_desc.setText(character.getDesc());
             Picasso.get().load(character.getImg()).into(img_details);
             
-            // Manejo del evento de clic en el botón favorito
-            btn_favorite.setOnClickListener(new View.OnClickListener() {
+            // Mostrar el ID del personaje con formato #ID
+            int characterId = character.getId();
+            if (characterId > 0) {
+                txt_character_id_display.setText("#" + characterId);
+            } else {
+                txt_character_id_display.setText("#" + (getAdapterPosition() + 1));
+            }
+            
+            // Configurar el botón de detalles para navegar a la pantalla de detalles
+            btn_details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Aquí se puede implementar la lógica para marcar como favorito
-                    // Por ejemplo, cambiar el icono o guardar en una lista de favoritos
-                    btn_favorite.setImageResource(android.R.drawable.btn_star_big_on);
+                    navigateToDetails(v.getContext(), character);
                 }
             });
             
@@ -84,16 +92,21 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             itemContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(v.getContext(), CharacterDetails.class);
-                    i.putExtra("name", character.getName());
-                    i.putExtra("desc", character.getDesc());
-                    i.putExtra("img", character.getImg());
-                    i.putExtra("comics", character.getComics());
-                    i.putExtra("series", character.getSeries());
-                    i.putExtra("stories", character.getStories());
-                    v.getContext().startActivity(i);
+                    navigateToDetails(v.getContext(), character);
                 }
             });
+        }
+        
+        // Método auxiliar para navegar a la pantalla de detalles
+        private void navigateToDetails(Context context, Characters character) {
+            Intent i = new Intent(context, CharacterDetails.class);
+            i.putExtra("name", character.getName());
+            i.putExtra("desc", character.getDesc());
+            i.putExtra("img", character.getImg());
+            i.putExtra("comics", character.getComics());
+            i.putExtra("series", character.getSeries());
+            i.putExtra("stories", character.getStories());
+            context.startActivity(i);
         }
     }
 }
