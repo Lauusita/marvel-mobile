@@ -1,79 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="20dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="20dp"
-    android:backgroundTint="@color/bg_black"
-    app:cardCornerRadius="20dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="@color/bg_black"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal"
-        >
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/img_pfp"
-            android:layout_width="120dp"
-            android:gravity="center"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:layout_marginRight="10dp">
-        </de.hdodenhof.circleimageview.CircleImageView>
+        <!-- Imagen del superhéroe con esquinas redondeadas -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
-            android:layout_marginLeft="10dp"
+            <ImageView
+                android:id="@+id/img_pfp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/hero_image" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Información del superhéroe -->
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Nombre del Héroe"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
+            app:layout_constraintStart_toEndOf="@+id/card_image"
+            app:layout_constraintTop_toTopOf="@+id/card_image" />
+
+        <!-- Barras de nivel/poder (como en la imagen de referencia) -->
+        <View
+            android:id="@+id/power_bar_1"
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/marvel"
+            app:layout_constraintStart_toStartOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+        <View
+            android:id="@+id/power_bar_2"
+            android:layout_width="30dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/hint"
+            app:layout_constraintStart_toEndOf="@+id/power_bar_1"
+            app:layout_constraintTop_toTopOf="@+id/power_bar_1" />
+
+        <!-- Información adicional del héroe (similar a la imagen de referencia) -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/power_bar_1" />
+
+        <!-- Primera fila de características -->
+        <View
+            android:id="@+id/attribute_1"
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/hint"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <View
+            android:id="@+id/attribute_2"
+            android:layout_width="30dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/attribute_1"
+            app:layout_constraintStart_toEndOf="@+id/attribute_1"
+            app:layout_constraintTop_toTopOf="@+id/attribute_1" />
+
+        <!-- Segunda fila de características -->
+        <View
+            android:id="@+id/attribute_3"
+            android:layout_width="50dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/hint"
+            app:layout_constraintStart_toStartOf="@+id/attribute_1"
+            app:layout_constraintTop_toBottomOf="@+id/attribute_1" />
+
+        <View
+            android:id="@+id/attribute_4"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/attribute_3"
+            app:layout_constraintStart_toEndOf="@+id/attribute_3"
+            app:layout_constraintTop_toTopOf="@+id/attribute_3" />
+
+        <!-- Botón de favorito -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="start"
-            >
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            app:fabSize="mini"
+            app:tint="@color/white"
+            app:backgroundTint="@color/marvel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/btn_star" />
 
-            <Button
-                android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hola"
-                android:textSize="20sp"
-                android:backgroundTint="@color/bg_black"
-                android:textColor="@color/marvel"
-                android:textStyle="bold">
-            </Button>
-            <TextView
-                android:id="@+id/txt_id"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="hola"
-                android:textColor="@color/hint">
-            </TextView>
-            <TextView
-                android:id="@+id/txt_desc"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
-            <TextView
-                android:id="@+id/txt_series"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
-            <TextView
-                android:id="@+id/txt_comics"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
-            <TextView
-                android:id="@+id/txt_stories"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
-        </LinearLayout>
-    </LinearLayout>
+        <!-- Campos ocultos para mantener compatibilidad con el código existente -->
+        <TextView
+            android:id="@+id/txt_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_series"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_comics"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_stories"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
