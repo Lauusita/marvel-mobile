@@ -91,9 +91,9 @@ public class SettingFragment extends Fragment {
      * Carga los datos del usuario desde SharedPreferences y los muestra en la UI
      */
     private void loadUserData() {
-        String name = sharedPreferences.getString("name", "Usuario");
-        String email = sharedPreferences.getString("mail", "correo@ejemplo.com");
-        String birthdate = sharedPreferences.getString("birthdate", "01/01/2000");
+        String name = sharedPreferences.getString("user_name", "Usuario");
+        String email = sharedPreferences.getString("user_email", "correo@ejemplo.com");
+        String birthdate = sharedPreferences.getString("user_birth_date", "01/01/2000");
 
         txtNameValue.setText(name);
         txtEmailValue.setText(email);

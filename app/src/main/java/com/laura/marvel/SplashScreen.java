@@ -28,7 +28,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void cacheValidation() {
-        usuario = getApplicationContext().getSharedPreferences(dataUserCache, privateMode).getString("mail", "0");
+        usuario = getApplicationContext().getSharedPreferences(dataUserCache, privateMode).getString("access_token", "0");
 
         new Handler().postDelayed(new Runnable() {
             @Override
