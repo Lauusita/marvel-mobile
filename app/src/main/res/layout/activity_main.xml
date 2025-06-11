@@ -30,6 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/black"
+        app:itemActiveIndicatorStyle="@style/customNav"
         android:backgroundTint="@color/marvel"
         app:itemHorizontalTranslationEnabled="true"
         app:itemTextColor="@color/marvel"
