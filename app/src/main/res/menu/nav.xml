@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:icon="@drawable/ic_home"
         android:id="@+id/item_home"
-        android:title="Home">
+        android:title="">
     </item>
     <item
+        android:icon="@drawable/ic_book"
         android:id="@+id/item_comic"
-        android:title="Request comic">
+        android:title="">
     </item>
     <item
+        android:icon="@drawable/ic_sett"
         android:id="@+id/item_settings"
-        android:title="Settings">
+        android:title="">
     </item>
 </menu>
