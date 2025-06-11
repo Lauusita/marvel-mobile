@@ -1,12 +1,14 @@
 package com.laura.marvel.classes;
 
 public class Comics {
-    private String name;
+    private int id;
+    private String title;
     private String img;
 
-    public Comics(String img, String name) {
+    public Comics(int id, String title, String img) {
+        this.id = id;
+        this.title = title;
         this.img = img;
-        this.name = name;
     }
 
     public String getImg() {
@@ -17,19 +19,14 @@ public class Comics {
         this.img = img;
     }
 
-    public String getName() {
-        return name;
-    }
+    public int getId() { return id; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getTitle() { return title; }
 
     @Override
     public String toString() {
-        return "Comics{" +
-                "img='" + img + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        // Esto es lo que se mostrará en el Spinner
+        return title;
     }
 }
+
