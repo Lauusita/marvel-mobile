@@ -73,16 +73,18 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             Picasso.get().load(character.getImg()).into(img_details);
             System.out.println("----" + character.getImg());
 
-            txt_name.setOnClickListener(new View.OnClickListener() {
+            // Hacer que todo el elemento sea clickeable
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), CharacterDetails.class);
                     i.putExtra("name", character.getName());
                     i.putExtra("desc", character.getDesc());
                     i.putExtra("img", character.getImg());
-                    i.putExtra("comics", character.getComics());
-                    i.putExtra("series", character.getSeries());
-                    i.putExtra("stories", character.getStories());
+                    i.putExtra("comics", String.valueOf(character.getComics()));
+                    i.putExtra("series", String.valueOf(character.getSeries()));
+                    i.putExtra("stories", String.valueOf(character.getStories()));
+                    i.putExtra("id", character.getId()); // Añadir el ID del personaje al intent
                     v.getContext().startActivity(i);
                 }
             });
