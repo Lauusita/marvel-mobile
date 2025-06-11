@@ -1,8 +1,11 @@
 package com.laura.marvel.fragments;
 
-import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,17 +16,23 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.laura.marvel.Login;
 import com.laura.marvel.R;
 import com.laura.marvel.adapters.CharacterAdapter;
 import com.laura.marvel.classes.Characters;
 import com.laura.marvel.classes.Comics;
+import com.squareup.picasso.Picasso;
+
+import androidx.appcompat.app.AlertDialog.Builder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,6 +52,7 @@ public class ComicFragment extends Fragment {
     Spinner spinner_comics;
     List<Comics> comics = new ArrayList<>();
     Button btn_solicitar;
+     Builder builder;
 
     public ComicFragment() {
         // Required empty public constructor
@@ -76,13 +86,34 @@ public class ComicFragment extends Fragment {
         btn_solicitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Object selectedItem = spinner_comics.getSelectedItem();
-                System.out.println("---" + selectedItem);
-                if (selectedItem == null) {
-                    Toast.makeText(requireContext(), "Se debe seleccionar item", Toast.LENGTH_SHORT).show();
-                }
+                Comics selectedComic = (Comics) spinner_comics.getSelectedItem();
+
+                LayoutInflater inflater = LayoutInflater.from(requireContext());
+                View dialogView = inflater.inflate(R.layout.comic_required, null);
+
+                ImageView imageView = dialogView.findViewById(R.id.comic_image);
+                TextView titleView = dialogView.findViewById(R.id.comic_title);
+
+                titleView.setText(selectedComic.getTitle());
+
+                Picasso.get().load(selectedComic.getImg().replace("http://", "https://")).into(imageView);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                builder.setTitle("Comic solicitado ");
+                builder.setView(dialogView);
+
+                builder.setNegativeButton("Regresar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
+
         return view;
     }
 
@@ -104,18 +135,18 @@ public class ComicFragment extends Fragment {
     }
 
     private void procesarRespuesta(JSONObject response, Spinner s) {
-        Set<String> seenTitles = new HashSet<>();
         try {
             JSONArray results = response.getJSONObject("data").getJSONArray("results");
             for (int i = 0; i < results.length(); i++) {
                 JSONObject obj = results.getJSONObject(i);
                 int id = obj.getInt("id");
                 String title = obj.getString("title");
+                String path = obj.getJSONObject("thumbnail").getString("path");
+                String extension = obj.getJSONObject("thumbnail").getString("extension");
 
-                if (!seenTitles.contains(title)) {
-                    comics.add(new Comics(id, title));
-                    seenTitles.add(title);
-                }
+                String img = path + "." + extension;
+
+                comics.add(new Comics(id, title, img));
             }
 
 
