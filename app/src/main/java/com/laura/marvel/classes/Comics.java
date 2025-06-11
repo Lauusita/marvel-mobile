@@ -1,35 +1,22 @@
 package com.laura.marvel.classes;
 
 public class Comics {
-    private String name;
-    private String img;
+    private int id;
+    private String title;
 
-    public Comics(String img, String name) {
-        this.img = img;
-        this.name = name;
+    public Comics(int id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
-    public String getImg() {
-        return img;
-    }
+    public int getId() { return id; }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getTitle() { return title; }
 
     @Override
     public String toString() {
-        return "Comics{" +
-                "img='" + img + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        // Esto es lo que se mostrará en el Spinner
+        return title;
     }
 }
+

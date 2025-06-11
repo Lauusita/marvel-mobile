@@ -2,8 +2,28 @@
     <string name="app_name">Marvel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <!-- Home Fragment Strings -->
     <string name="marvel_heroes_title">MARVEL HEROES</string>
     <string name="marvel_heroes_subtitle">Descubre todos los personajes del universo Marvel</string>
+
+    <!-- Settings Fragment -->
+    <string name="settings">Settings</string>
+    <string name="user_profile">User Profile</string>
+    <string name="name_label">Name:</string>
+    <string name="email_label">Email:</string>
+    <string name="birthdate_label">Birthdate:</string>
+    <string name="logout">Logout</string>
+    <string name="logout_title">Logout</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="logout_confirm">Yes, logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout_success">Logged out successfully</string>
+    <string name="app_settings">App Settings</string>
+    <string name="enable_notifications">Enable notifications</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_disabled">Notifications disabled</string>
+    <string name="dark_theme_enabled">Dark theme enabled</string>
+    <string name="light_theme_enabled">Light theme enabled</string>
 </resources>
