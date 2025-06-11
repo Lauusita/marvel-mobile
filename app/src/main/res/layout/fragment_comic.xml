@@ -15,9 +15,15 @@
 
         <Spinner
             android:id="@+id/spinner_comics"
-            android:layout_width="300dp"
-            android:layout_height="30dp">
-        </Spinner>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input"
+            android:padding="10dp"
+            android:popupBackground="@color/bg_black"
+            android:spinnerMode="dropdown"
+             />
 
         <Button
             android:id="@+id/btn_solicitar"
