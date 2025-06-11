@@ -2,4 +2,8 @@
     <string name="app_name">Marvel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <!-- Home Fragment Strings -->
+    <string name="marvel_heroes_title">MARVEL HEROES</string>
+    <string name="marvel_heroes_subtitle">Descubre todos los personajes del universo Marvel</string>
 </resources>
