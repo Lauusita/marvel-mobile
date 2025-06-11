@@ -48,31 +48,32 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     }
 
     public class ViewHolder extends  RecyclerView.ViewHolder {
-        Button btn_name;
+        TextView txt_name;
         ImageView img_details;
         TextView txt_desc, txt_id, txt_comics, txt_series, txt_stories;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            btn_name = itemView.findViewById(R.id.txt_name);
+            txt_name = itemView.findViewById(R.id.txt_name);
             txt_desc = itemView.findViewById(R.id.txt_desc);
             txt_id = itemView.findViewById(R.id.txt_id);
-            txt_comics = itemView.findViewById(R.id.item_comic);
+            txt_comics = itemView.findViewById(R.id.txt_comics);
             txt_series = itemView.findViewById(R.id.txt_series);
             txt_stories = itemView.findViewById(R.id.txt_stories);
             img_details = itemView.findViewById(R.id.img_pfp);
         }
 
         public void bind(Characters character) {
-            btn_name.setText(character.getName());
+            txt_name.setText(character.getName());
             txt_desc.setText(character.getDesc());
+            txt_id.setText("ID: " + character.getId());
+            txt_comics.setText(String.valueOf(character.getComics()));
+            txt_series.setText(String.valueOf(character.getSeries()));
+            txt_stories.setText(String.valueOf(character.getStories()));
             Picasso.get().load(character.getImg()).into(img_details);
             System.out.println("----" + character.getImg());
-//            txt_comics.setText(character.getComics());
-//            txt_series.setText(character.getSeries());
-//            txt_stories.setText(character.getStories());
 
-            btn_name.setOnClickListener(new View.OnClickListener() {
+            txt_name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(), CharacterDetails.class);

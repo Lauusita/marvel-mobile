@@ -1,79 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="20dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="20dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="8dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"
     android:backgroundTint="@color/bg_black"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="16dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal"
-        >
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
+        <!-- Badge con ID en la esquina superior derecha -->
+        <TextView
+            android:id="@+id/txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/marvel"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ID: 1011334" />
+
+        <!-- Imagen del personaje -->
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/img_pfp"
-            android:layout_width="120dp"
-            android:gravity="center"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            android:layout_marginRight="10dp">
-        </de.hdodenhof.circleimageview.CircleImageView>
+            app:civ_border_color="@color/marvel"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="start"
-            >
+        <!-- Nombre del personaje -->
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/marvel"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_pfp"
+            app:layout_constraintTop_toBottomOf="@+id/txt_id"
+            tools:text="Spider-Man" />
 
-            <Button
-                android:id="@+id/txt_name"
+        <!-- Descripción del personaje -->
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/hint"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name"
+            tools:text="Bitten by a radioactive spider, Peter Parker's arachnid abilities give him amazing powers he uses to help others." />
+
+        <!-- Contenedor para stats -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/main_bg"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_pfp">
+
+            <!-- Stats: Comics -->
+            <TextView
+                android:id="@+id/txt_comics_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hola"
-                android:textSize="20sp"
-                android:backgroundTint="@color/bg_black"
-                android:textColor="@color/marvel"
-                android:textStyle="bold">
-            </Button>
-            <TextView
-                android:id="@+id/txt_id"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="hola"
-                android:textColor="@color/hint">
-            </TextView>
-            <TextView
-                android:id="@+id/txt_desc"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
-            <TextView
-                android:id="@+id/txt_series"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
+                android:text="Comics"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_series_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txt_comics"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/marvel"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/txt_comics_label"
+                app:layout_constraintStart_toStartOf="@+id/txt_comics_label"
+                app:layout_constraintTop_toBottomOf="@+id/txt_comics_label"
+                tools:text="2109" />
+
+            <!-- Stats: Series -->
+            <TextView
+                android:id="@+id/txt_series_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Series"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_stories_label"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_comics_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_series"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/marvel"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/txt_series_label"
+                app:layout_constraintStart_toStartOf="@+id/txt_series_label"
+                app:layout_constraintTop_toBottomOf="@+id/txt_series_label"
+                tools:text="109" />
+
+            <!-- Stats: Stories -->
+            <TextView
+                android:id="@+id/txt_stories_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stories"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_series_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txt_stories"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
-            </TextView>
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/marvel"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/txt_stories_label"
+                app:layout_constraintStart_toStartOf="@+id/txt_stories_label"
+                app:layout_constraintTop_toBottomOf="@+id/txt_stories_label"
+                tools:text="2513" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
